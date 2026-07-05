@@ -1,636 +1,1144 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>lao6-PE - 下载</title>
-<link rel="icon" href="logo.ico" type="image/x-icon">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg-deep: #05080e;
-    --bg-main: #0a0f1a;
-    --bg-surface: #111827;
-    --bg-card: #141c2e;
-    --bg-card-hover: #1a2540;
-    --accent-blue: #3b82f6;
-    --accent-cyan: #06b6d4;
-    --accent-emerald: #10b981;
-    --accent-amber: #f59e0b;
-    --accent-rose: #f43f5e;
-    --accent-violet: #8b5cf6;
-    --text-primary: #f1f5f9;
-    --text-secondary: #94a3b8;
-    --text-muted: #64748b;
-    --border: #1e293b;
-    --radius: 16px;
-    --radius-sm: 10px;
-    --radius-xs: 6px;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lao6-PE - 下载</title>
+    <link rel="icon" href="logo.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #05080e;
+            --bg-main: #0a0f1a;
+            --bg-surface: #111827;
+            --bg-card: #141c2e;
+            --bg-card-hover: #1a2540;
+            --accent-blue: #3b82f6;
+            --accent-cyan: #06b6d4;
+            --accent-emerald: #10b981;
+            --accent-amber: #f59e0b;
+            --accent-rose: #f43f5e;
+            --accent-violet: #8b5cf6;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: #1e293b;
+            --radius: 16px;
+            --radius-sm: 10px;
+            --radius-xs: 6px;
+        }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
 
-  body {
-    font-family: 'Noto Sans SC', system-ui, sans-serif;
-    background: var(--bg-deep);
-    color: var(--text-primary);
-    line-height: 1.6;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-  }
+        body {
+            font-family: 'Noto Sans SC', system-ui, sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
 
-  body::before {
-    content: '';
-    position: fixed; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-    opacity: 0.025;
-    pointer-events: none;
-    z-index: 9999;
-  }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+            opacity: 0.025;
+            pointer-events: none;
+            z-index: 9999;
+        }
 
-  .ambient { position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; }
-  .ambient-1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(59,130,246,0.12), transparent 70%); top: -100px; left: -200px; animation: drift1 18s ease-in-out infinite; }
-  .ambient-2 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(6,182,212,0.08), transparent 70%); bottom: 10%; right: -150px; animation: drift2 22s ease-in-out infinite; }
-  .ambient-3 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(139,92,246,0.06), transparent 70%); top: 50%; left: 30%; animation: drift3 20s ease-in-out infinite; }
-  @keyframes drift1 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(80px,60px); } }
-  @keyframes drift2 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-60px,-80px); } }
-  @keyframes drift3 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-40px,50px); } }
+        .ambient {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .ambient-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.12), transparent 70%);
+            top: -100px;
+            left: -200px;
+            animation: drift1 18s ease-in-out infinite;
+        }
+        .ambient-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.08), transparent 70%);
+            bottom: 10%;
+            right: -150px;
+            animation: drift2 22s ease-in-out infinite;
+        }
+        .ambient-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.06), transparent 70%);
+            top: 50%;
+            left: 30%;
+            animation: drift3 20s ease-in-out infinite;
+        }
+        @keyframes drift1 {
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(80px, 60px);
+            }
+        }
+        @keyframes drift2 {
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(-60px, -80px);
+            }
+        }
+        @keyframes drift3 {
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(-40px, 50px);
+            }
+        }
 
-  .grid-bg {
-    position: fixed; inset: 0;
-    background-image: linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
-    pointer-events: none; z-index: 0;
-  }
+        .grid-bg {
+            position: fixed;
+            inset: 0;
+            background-image: linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
 
-  .watermark {
-    position: fixed;
-    bottom: 16px;
-    left: 20px;
-    font-size: 0.7rem;
-    color: rgba(148,163,184,0.3);
-    letter-spacing: 0.02em;
-    z-index: 9998;
-    pointer-events: none;
-    user-select: none;
-  }
+        .watermark {
+            position: fixed;
+            bottom: 16px;
+            left: 20px;
+            font-size: 0.7rem;
+            color: rgba(148, 163, 184, 0.3);
+            letter-spacing: 0.02em;
+            z-index: 9998;
+            pointer-events: none;
+            user-select: none;
+        }
 
-  .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
 
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    backdrop-filter: blur(20px) saturate(1.8);
-    background: rgba(5,8,14,0.7);
-    border-bottom: 1px solid rgba(59,130,246,0.08);
-    transition: box-shadow 0.3s;
-  }
-  nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.4); }
-  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-  .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text-primary); }
-  .nav-brand img { width: 32px; height: 32px; border-radius: 8px; }
-  .nav-brand span { font-family: 'Noto Sans SC', sans-serif; font-weight: 700; font-size: 1.15rem; letter-spacing: 0.01em; }
-  .nav-links { display: flex; gap: 8px; list-style: none; }
-  .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.88rem; font-weight: 500; padding: 8px 16px; border-radius: 8px; transition: all 0.2s; cursor: pointer; }
-  .nav-links a:hover { color: var(--text-primary); background: rgba(59,130,246,0.08); }
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: blur(20px) saturate(1.8);
+            background: rgba(5, 8, 14, 0.7);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.08);
+            transition: box-shadow 0.3s;
+        }
+        nav.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+        }
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+        .nav-brand img {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+        }
+        .nav-brand span {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-weight: 700;
+            font-size: 1.15rem;
+            letter-spacing: 0.01em;
+        }
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .nav-links a:hover {
+            color: var(--text-primary);
+            background: rgba(59, 130, 246, 0.08);
+        }
 
-  .hero { padding: 160px 0 80px; text-align: center; position: relative; }
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2);
-    color: var(--accent-blue); padding: 6px 18px; border-radius: 100px;
-    font-size: 0.82rem; font-weight: 600; margin-bottom: 32px;
-    animation: fadeUp 0.6s ease both;
-  }
-  .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--accent-emerald); border-radius: 50%; animation: pulse-dot 2s ease-in-out infinite; }
-  @keyframes pulse-dot { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.4); } }
+        .hero {
+            padding: 160px 0 80px;
+            text-align: center;
+            position: relative;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            color: var(--accent-blue);
+            padding: 6px 18px;
+            border-radius: 100px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-bottom: 32px;
+            animation: fadeUp 0.6s ease both;
+        }
+        .hero-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--accent-emerald);
+            border-radius: 50%;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+        @keyframes pulse-dot {
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(1.4);
+            }
+        }
 
-  .hero h1 {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-weight: 900;
-    font-size: clamp(2.8rem, 6vw, 5rem);
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-    margin-bottom: 24px;
-    animation: fadeUp 0.6s ease 0.1s both;
-  }
-  .hero h1 .highlight {
-    background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .hero-sub { font-size: 1.15rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 40px; line-height: 1.7; animation: fadeUp 0.6s ease 0.2s both; }
-  .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; animation: fadeUp 0.6s ease 0.3s both; }
-  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; border-radius: var(--radius-sm); font-size: 0.95rem; font-weight: 600; text-decoration: none; cursor: pointer; border: none; transition: all 0.25s cubic-bezier(0.4,0,0.2,1); font-family: inherit; }
-  .btn-primary { background: linear-gradient(135deg, var(--accent-blue), #2563eb); color: #fff; box-shadow: 0 4px 20px rgba(59,130,246,0.25); }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 0 3px rgba(59,130,246,0.15), 0 8px 30px rgba(59,130,246,0.35); }
+        .hero h1 {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-weight: 900;
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            animation: fadeUp 0.6s ease 0.1s both;
+        }
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-sub {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+            animation: fadeUp 0.6s ease 0.2s both;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeUp 0.6s ease 0.3s both;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: inherit;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-blue), #2563eb);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.25);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15), 0 8px 30px rgba(59, 130, 246, 0.35);
+        }
 
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-  .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 96px; animation: fadeUp 0.6s ease 0.4s both; }
-  .stat-item { background: var(--bg-surface); padding: 28px 20px; text-align: center; }
-  .stat-num { font-family: 'JetBrains Mono', monospace; font-size: 1.6rem; font-weight: 600; color: var(--accent-cyan); margin-bottom: 4px; }
-  .stat-label { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-bottom: 96px;
+            animation: fadeUp 0.6s ease 0.4s both;
+        }
+        .stat-item {
+            background: var(--bg-surface);
+            padding: 28px 20px;
+            text-align: center;
+        }
+        .stat-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--accent-cyan);
+            margin-bottom: 4px;
+        }
+        .stat-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
 
-  section { margin-bottom: 96px; }
-  .section-header { text-align: center; margin-bottom: 56px; }
-  .section-tag { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 600; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 12px; }
-  .section-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: clamp(1.8rem, 3.5vw, 2.6rem); letter-spacing: -0.03em; }
-  .section-desc { color: var(--text-secondary); max-width: 520px; margin: 12px auto 0; font-size: 0.95rem; }
+        section {
+            margin-bottom: 96px;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+        .section-tag {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            letter-spacing: -0.03em;
+        }
+        .section-desc {
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin: 12px auto 0;
+            font-size: 0.95rem;
+        }
 
-  .version-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-  .version-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 0; position: relative; overflow: hidden; transition: all 0.35s cubic-bezier(0.4,0,0.2,1); display: flex; flex-direction: column; }
-  .version-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.35); }
-  .version-card.featured { border-color: rgba(59,130,246,0.3); box-shadow: 0 0 0 1px rgba(59,130,246,0.1), 0 8px 30px rgba(59,130,246,0.08); }
-  .version-card.featured:hover { box-shadow: 0 0 0 1px rgba(59,130,246,0.2), 0 20px 60px rgba(59,130,246,0.12); }
+        .version-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        .version-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+        }
+        .version-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+        }
+        .version-card.featured {
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.1), 0 8px 30px rgba(59, 130, 246, 0.08);
+        }
+        .version-card.featured:hover {
+            box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.2), 0 20px 60px rgba(59, 130, 246, 0.12);
+        }
 
-  .vc-header { padding: 28px 28px 0; position: relative; }
-  .vc-header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
-  .version-card:nth-child(1) .vc-header::before { background: linear-gradient(90deg, var(--accent-emerald), #34d399); }
-  .version-card:nth-child(2) .vc-header::before { background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan)); }
-  .version-card:nth-child(3) .vc-header::before { background: linear-gradient(90deg, var(--accent-amber), #fbbf24); }
-  .version-card:nth-child(4) .vc-header::before { background: linear-gradient(90deg, var(--accent-rose), #fb7185); }
+        .vc-header {
+            padding: 28px 28px 0;
+            position: relative;
+        }
+        .vc-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+        }
+        .version-card:nth-child(1) .vc-header::before {
+            background: linear-gradient(90deg, var(--accent-emerald), #34d399);
+        }
+        .version-card:nth-child(2) .vc-header::before {
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+        }
+        .version-card:nth-child(3) .vc-header::before {
+            background: linear-gradient(90deg, var(--accent-amber), #fbbf24);
+        }
+        .version-card:nth-child(4) .vc-header::before {
+            background: linear-gradient(90deg, var(--accent-rose), #fb7185);
+        }
 
-  .vc-tag { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 600; padding: 4px 10px; border-radius: 6px; margin-bottom: 14px; letter-spacing: 0.05em; }
-  .version-card:nth-child(1) .vc-tag { background: rgba(16,185,129,0.12); color: var(--accent-emerald); }
-  .version-card:nth-child(2) .vc-tag { background: rgba(59,130,246,0.12); color: var(--accent-blue); }
-  .version-card:nth-child(3) .vc-tag { background: rgba(245,158,11,0.12); color: var(--accent-amber); }
-  .version-card:nth-child(4) .vc-tag { background: rgba(244,63,94,0.12); color: var(--accent-rose); }
+        .vc-tag {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 6px;
+            margin-bottom: 14px;
+            letter-spacing: 0.05em;
+        }
+        .version-card:nth-child(1) .vc-tag {
+            background: rgba(16, 185, 129, 0.12);
+            color: var(--accent-emerald);
+        }
+        .version-card:nth-child(2) .vc-tag {
+            background: rgba(59, 130, 246, 0.12);
+            color: var(--accent-blue);
+        }
+        .version-card:nth-child(3) .vc-tag {
+            background: rgba(245, 158, 11, 0.12);
+            color: var(--accent-amber);
+        }
+        .version-card:nth-child(4) .vc-tag {
+            background: rgba(244, 63, 94, 0.12);
+            color: var(--accent-rose);
+        }
 
-  .featured .vc-tag { background: rgba(59,130,246,0.15); color: var(--accent-blue); }
-  .featured-badge { display: inline-block; font-size: 0.65rem; font-weight: 700; color: var(--accent-amber); background: rgba(245,158,11,0.12); padding: 3px 8px; border-radius: 4px; margin-left: 8px; letter-spacing: 0.05em; vertical-align: middle; }
+        .featured .vc-tag {
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--accent-blue);
+        }
+        .featured-badge {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--accent-amber);
+            background: rgba(245, 158, 11, 0.12);
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-left: 8px;
+            letter-spacing: 0.05em;
+            vertical-align: middle;
+        }
 
-  .vc-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.35rem; letter-spacing: -0.02em; margin-bottom: 6px; }
-  .vc-size { font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 4px; }
-  .vc-size strong { color: var(--text-secondary); font-weight: 600; }
-  .vc-desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 4px; }
+        .vc-title {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 1.35rem;
+            letter-spacing: -0.02em;
+            margin-bottom: 6px;
+        }
+        .vc-size {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+        .vc-size strong {
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+        .vc-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 4px;
+        }
 
-  .vc-body { padding: 20px 28px; flex: 1; }
-  .vc-body ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-  .vc-body li { font-size: 0.85rem; color: var(--text-secondary); padding-left: 22px; position: relative; line-height: 1.5; }
-  .vc-body li::before { content: ''; position: absolute; left: 0; top: 7px; width: 8px; height: 8px; border-radius: 2px; transform: rotate(45deg); }
-  .version-card:nth-child(1) .vc-body li::before { background: rgba(16,185,129,0.5); }
-  .version-card:nth-child(2) .vc-body li::before { background: rgba(59,130,246,0.5); }
-  .version-card:nth-child(3) .vc-body li::before { background: rgba(245,158,11,0.5); }
-  .version-card:nth-child(4) .vc-body li::before { background: rgba(244,63,94,0.5); }
+        .vc-body {
+            padding: 20px 28px;
+            flex: 1;
+        }
+        .vc-body ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .vc-body li {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            padding-left: 22px;
+            position: relative;
+            line-height: 1.5;
+        }
+        .vc-body li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 7px;
+            width: 8px;
+            height: 8px;
+            border-radius: 2px;
+            transform: rotate(45deg);
+        }
+        .version-card:nth-child(1) .vc-body li::before {
+            background: rgba(16, 185, 129, 0.5);
+        }
+        .version-card:nth-child(2) .vc-body li::before {
+            background: rgba(59, 130, 246, 0.5);
+        }
+        .version-card:nth-child(3) .vc-body li::before {
+            background: rgba(245, 158, 11, 0.5);
+        }
+        .version-card:nth-child(4) .vc-body li::before {
+            background: rgba(244, 63, 94, 0.5);
+        }
 
-  .compare-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border); }
-  .compare-table { width: 100%; border-collapse: collapse; min-width: 700px; }
-  .compare-table th, .compare-table td { padding: 16px 20px; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.88rem; }
-  .compare-table th { background: var(--bg-surface); color: var(--text-muted); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; position: sticky; top: 0; }
-  .compare-table td:first-child { font-weight: 600; color: var(--text-primary); white-space: nowrap; }
-  .compare-table tbody tr { background: var(--bg-card); transition: background 0.2s; }
-  .compare-table tbody tr:hover { background: var(--bg-card-hover); }
-  .check { color: var(--accent-emerald); font-weight: 700; }
-  .cross { color: var(--text-muted); }
-  .highlight-cell { color: var(--accent-blue); font-weight: 600; }
+        .compare-wrap {
+            overflow-x: auto;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+        .compare-table th,
+        .compare-table td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.88rem;
+        }
+        .compare-table th {
+            background: var(--bg-surface);
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            position: sticky;
+            top: 0;
+        }
+        .compare-table td:first-child {
+            font-weight: 600;
+            color: var(--text-primary);
+            white-space: nowrap;
+        }
+        .compare-table tbody tr {
+            background: var(--bg-card);
+            transition: background 0.2s;
+        }
+        .compare-table tbody tr:hover {
+            background: var(--bg-card-hover);
+        }
+        .check {
+            color: var(--accent-emerald);
+            font-weight: 700;
+        }
+        .cross {
+            color: var(--text-muted);
+        }
+        .highlight-cell {
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
 
-  .modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(8px);
-    z-index: 10000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-  }
-  .modal-overlay.active {
-    opacity: 1;
-    pointer-events: auto;
-  }
-  .modal {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    width: 90%;
-    max-width: 440px;
-    transform: translateY(20px) scale(0.96);
-    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
-    overflow: hidden;
-  }
-  .modal-overlay.active .modal {
-    transform: translateY(0) scale(1);
-  }
-  .modal-top-bar {
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan), var(--accent-violet));
-  }
-  .modal-header {
-    padding: 28px 28px 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .modal-header h3 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 1.2rem;
-    letter-spacing: -0.01em;
-  }
-  .modal-close {
-    width: 32px; height: 32px;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--text-muted);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
-    font-size: 1.1rem;
-    font-family: inherit;
-  }
-  .modal-close:hover {
-    color: var(--text-primary);
-    border-color: rgba(244,63,94,0.4);
-    background: rgba(244,63,94,0.08);
-  }
-  .modal-body {
-    padding: 24px 28px 28px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  .dl-option {
-    background: var(--bg-surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 20px;
-    text-decoration: none;
-    color: inherit;
-    transition: all 0.25s;
-    display: block;
-  }
-  .dl-option:hover {
-    border-color: rgba(59,130,246,0.3);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
-  }
-  .dl-option-title {
-    font-weight: 700;
-    font-size: 0.95rem;
-    margin-bottom: 6px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .dl-option-title .dl-icon {
-    width: 20px; height: 20px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.7rem;
-    flex-shrink: 0;
-  }
-  .dl-option:nth-child(1) .dl-icon { background: rgba(59,130,246,0.15); color: var(--accent-blue); }
-  .dl-option:nth-child(2) .dl-icon { background: rgba(16,185,129,0.15); color: var(--accent-emerald); }
-  .dl-option-note {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    line-height: 1.5;
-    padding-left: 28px;
-  }
-  .dl-option:nth-child(1):hover { border-color: rgba(59,130,246,0.4); }
-  .dl-option:nth-child(2):hover { border-color: rgba(16,185,129,0.4); }
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            width: 90%;
+            max-width: 440px;
+            transform: translateY(20px) scale(0.96);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+        .modal-overlay.active .modal {
+            transform: translateY(0) scale(1);
+        }
+        .modal-top-bar {
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan), var(--accent-violet));
+        }
+        .modal-header {
+            padding: 28px 28px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .modal-header h3 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: -0.01em;
+        }
+        .modal-close {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            font-size: 1.1rem;
+            font-family: inherit;
+        }
+        .modal-close:hover {
+            color: var(--text-primary);
+            border-color: rgba(244, 63, 94, 0.4);
+            background: rgba(244, 63, 94, 0.08);
+        }
+        .modal-body {
+            padding: 24px 28px 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .dl-option {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 20px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.25s;
+            display: block;
+            cursor: pointer;
+        }
+        .dl-option:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+        }
+        .dl-option-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .dl-option-title .dl-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            flex-shrink: 0;
+        }
+        .dl-option:nth-child(1) .dl-icon {
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--accent-blue);
+        }
+        .dl-option:nth-child(2) .dl-icon {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-emerald);
+        }
+        .dl-option:nth-child(3) .dl-icon {
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--accent-amber);
+        }
+        .dl-option-note {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            padding-left: 28px;
+        }
+        .dl-option:nth-child(1):hover {
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+        .dl-option:nth-child(2):hover {
+            border-color: rgba(16, 185, 129, 0.4);
+        }
+        .dl-option:nth-child(3):hover {
+            border-color: rgba(245, 158, 11, 0.4);
+        }
 
-  footer { border-top: 1px solid var(--border); padding: 48px 0; text-align: center; }
-  .footer-brand { font-family: 'Noto Sans SC', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; display: flex; align-items: center; justify-content: center; gap: 8px; }
-  .footer-brand img { width: 20px; height: 20px; border-radius: 4px; }
-  .footer-text { font-size: 0.8rem; color: var(--text-muted); line-height: 1.7; }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 48px 0;
+            text-align: center;
+        }
+        .footer-brand {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .footer-brand img {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        .footer-text {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
 
-  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1); }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-  @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .stats-bar { grid-template-columns: repeat(2, 1fr); }
-    .hero { padding: 130px 0 60px; }
-    .version-grid { grid-template-columns: 1fr; }
-    section { margin-bottom: 64px; }
-    .hero-actions { flex-direction: column; align-items: center; }
-    .btn { width: 100%; max-width: 280px; justify-content: center; }
-  }
-  @media (max-width: 480px) {
-    .stats-bar { grid-template-columns: 1fr; }
-    .container { padding: 0 16px; }
-  }
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .hero {
+                padding: 130px 0 60px;
+            }
+            .version-grid {
+                grid-template-columns: 1fr;
+            }
+            section {
+                margin-bottom: 64px;
+            }
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+        }
+        @media (max-width: 480px) {
+            .stats-bar {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 0 16px;
+            }
+        }
 
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: var(--bg-deep); }
-  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-  ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
-</style>
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-deep);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
+        }
+    </style>
 </head>
 <body>
 
-<div class="ambient ambient-1"></div>
-<div class="ambient ambient-2"></div>
-<div class="ambient ambient-3"></div>
-<div class="grid-bg"></div>
+    <div class="ambient ambient-1"></div>
+    <div class="ambient ambient-2"></div>
+    <div class="ambient ambient-3"></div>
+    <div class="grid-bg"></div>
 
-<div class="watermark">此页面由 lao6 OS 开发团队 制作，Xiaomi MiMo Studio 辅助修复和编写</div>
+    <div class="watermark">此页面由 lao6 OS 开发团队 制作，Xiaomi MiMo Studio 辅助修复和编写</div>
 
-<div class="modal-overlay" id="dlModal">
-  <div class="modal">
-    <div class="modal-top-bar"></div>
-    <div class="modal-header">
-      <h3>选择下载方式</h3>
-      <button class="modal-close" id="modalClose">&times;</button>
-    </div>
-    <div class="modal-body">
-      <a href="https://1812019632.share.123pan.cn/123pan/AH3rVv-I2ARh?pwd=H28G" target="_blank" rel="noopener" class="dl-option">
-        <div class="dl-option-title">
-          <span class="dl-icon">
-            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          </span>
-          前往123网盘下载
+    <div class="modal-overlay" id="dlModal">
+        <div class="modal">
+            <div class="modal-top-bar"></div>
+            <div class="modal-header">
+                <h3>选择下载方式</h3>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <a href="https://1812019632.share.123pan.cn/123pan/AH3rVv-I2ARh?pwd=H28G" target="_blank" rel="noopener" class="dl-option">
+                    <div class="dl-option-title">
+                        <span class="dl-icon">
+                            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        </span>
+                        前往123网盘下载
+                    </div>
+                    <div class="dl-option-note">需登录，下载无需客户端和收费，下载不限速，可选择历史版本</div>
+                </a>
+                <a href="" target="_blank" rel="noopener" class="dl-option">
+                    <div class="dl-option-title">
+                        <span class="dl-icon">
+                            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        </span>
+                        QQ闪传下载（暂未开放）
+                    </div>
+                    <div class="dl-option-note">无需登录、客户端、收费，下载不限速，只能下载最新版本</div>
+                </a>
+                <!-- 新增：U盘制作工具 -->
+                <a href="javascript:void(0)" onclick="openLanzou()" class="dl-option">
+                    <div class="dl-option-title">
+                        <span class="dl-icon">
+                            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M12 2v8m0 0l-3-3m3 3l3-3M5 14h14M5 18h14M5 22h14"/>
+                            </svg>
+                        </span>
+                        U盘制作工具
+                    </div>
+                    <div class="dl-option-note">蓝奏云网盘下载，访问密码 1234</div>
+                </a>
+            </div>
         </div>
-        <div class="dl-option-note">需登录，下载无需客户端和收费，下载不限速，可选择历史版本</div>
-      </a>
-      <a href="" target="_blank" rel="noopener" class="dl-option">
-        <div class="dl-option-title">
-          <span class="dl-icon">
-            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          </span>
-          QQ闪传下载（暂未开放）
+    </div>
+
+    <nav id="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-brand">
+                <img src="logo.ico" alt="lao6-PE">
+                <span>lao6-PE</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="https://douyin-lao6pc.github.io" target="_blank" rel="noopener">抖音-老六说电脑 的官网</a></li>
+                <li><a href="javascript:void(0)" onclick="openModal()">前往下载</a></li>
+                <li><a href="#versions">更新日志</a></li>
+                <li><a href="#compare">版本对比</a></li>
+            </ul>
         </div>
-        <div class="dl-option-note">无需登录、客户端、收费，下载不限速，只能下载最新版本</div>
-      </a>
-    </div>
-  </div>
-</div>
+    </nav>
 
-<nav id="nav">
-  <div class="nav-inner">
-    <a href="#" class="nav-brand">
-      <img src="logo.ico" alt="lao6-PE">
-      <span>lao6-PE</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="https://douyin-lao6pc.github.io" target="_blank" rel="noopener">抖音-老六说电脑 的官网</a></li>
-      <li><a href="javascript:void(0)" onclick="openModal()">前往下载</a></li>
-      <li><a href="#versions">更新日志</a></li>
-      <li><a href="#compare">版本对比</a></li>
-    </ul>
-  </div>
-</nav>
+    <div class="container">
+        <section class="hero">
+            <div class="hero-badge">1.5 版本已发布 &mdash; 全系列更新</div>
+            <h1>
+                <span class="highlight">lao6-PE</span><br>
+                更好的 PE 维护系统
+            </h1>
+            <p class="hero-sub">做一个高端标杆的PE系统 | 当前用户量（07/04）：1019</p>
+            <div class="hero-actions">
+                <button class="btn btn-primary" onclick="openModal()">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    前往下载
+                </button>
+            </div>
+        </section>
 
-<div class="container">
-  <section class="hero">
-    <div class="hero-badge">1.5 版本已发布 &mdash; 全系列更新</div>
-    <h1>
-      <span class="highlight">lao6-PE</span><br>
-      更好的 PE 维护系统
-    </h1>
-    <p class="hero-sub">做一个高端标杆的PE系统 | 当前用户量（07/04）：1019</p>
-    <div class="hero-actions">
-      <button class="btn btn-primary" onclick="openModal()">
-        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        前往下载
-      </button>
-    </div>
-  </section>
-
-  <div class="stats-bar reveal">
-    <div class="stat-item">
-      <div class="stat-num">1.5</div>
-      <div class="stat-label">最新版本</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">4</div>
-      <div class="stat-label">分支版本</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">Win11</div>
-      <div class="stat-label">内核基础</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">BIOS+UEFI</div>
-      <div class="stat-label">引导支持</div>
-    </div>
-  </div>
-
-  <section id="versions">
-    <div class="section-header reveal">
-      <div class="section-tag">// Changelog</div>
-      <h2 class="section-title">更新日志</h2>
-      <p class="section-desc">用户量（2026/07/04）：1019</p>
-    </div>
-    <div class="version-grid">
-      <div class="version-card reveal">
-        <div class="vc-header">
-          <span class="vc-tag">标准版</span>
-          <div class="vc-title">lao6-PE 1.5 标准版</div>
-          <div class="vc-size">ISO 大小: <strong>440.00 MB</strong> <span style="color:var(--accent-emerald); font-size:0.75rem;">(1.4版本 602.03 MB)</span></div>
+        <div class="stats-bar reveal">
+            <div class="stat-item">
+                <div class="stat-num">1.5</div>
+                <div class="stat-label">最新版本</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">4</div>
+                <div class="stat-label">分支版本</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">Win11</div>
+                <div class="stat-label">内核基础</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">BIOS+UEFI</div>
+                <div class="stat-label">引导支持</div>
+            </div>
         </div>
-        <div class="vc-body">
-          <ul>
-            <li>Windows 11 内核，与其他分支版本一致</li>
-            <li>新增 Ghost 工具 (CGI-Plus、Ghost64、OneKeyGhost)</li>
-            <li>保留 Windows Installer (MSI 安装包工具)</li>
-            <li>修复 Legacy BIOS 引导启动问题</li>
-          </ul>
-        </div>
-      </div>
 
-      <div class="version-card reveal">
-        <div class="vc-header">
-          <span class="vc-tag">专业版</span>
-          <div class="vc-title">lao6-PE 1.5 Pro</div>
-          <div class="vc-size">ISO 大小: <strong>850.00 MB</strong> <span style="color:var(--accent-emerald); font-size:0.75rem;">(1.4版本 855.63 MB)</span></div>
-        </div>
-        <div class="vc-body">
-          <ul>
-            <li>新增 Ghost 工具 (CGI-Plus、Ghost64、OneKeyGhost)</li>
-            <li>Microsoft Edge 升级至 149 版本 (Chromium 149)</li>
-            <li>修复 Legacy BIOS 引导启动问题</li>
-          </ul>
-        </div>
-      </div>
+        <section id="versions">
+            <div class="section-header reveal">
+                <div class="section-tag">// Changelog</div>
+                <h2 class="section-title">更新日志</h2>
+                <p class="section-desc">用户量（2026/07/04）：1019</p>
+            </div>
+            <div class="version-grid">
+                <div class="version-card reveal">
+                    <div class="vc-header">
+                        <span class="vc-tag">标准版</span>
+                        <div class="vc-title">lao6-PE 1.5 标准版</div>
+                        <div class="vc-size">ISO 大小: <strong>440.00 MB</strong> <span style="color:var(--accent-emerald); font-size:0.75rem;">(1.4版本 602.03 MB)</span></div>
+                    </div>
+                    <div class="vc-body">
+                        <ul>
+                            <li>Windows 11 内核，与其他分支版本一致</li>
+                            <li>新增 Ghost 工具 (CGI-Plus、Ghost64、OneKeyGhost)</li>
+                            <li>保留 Windows Installer (MSI 安装包工具)</li>
+                            <li>修复 Legacy BIOS 引导启动问题</li>
+                        </ul>
+                    </div>
+                </div>
 
-      <div class="version-card featured reveal">
-        <div class="vc-header">
-          <span class="vc-tag">旗舰版 <span class="featured-badge">推荐</span></span>
-          <div class="vc-title">lao6-PE 1.5 Ultra</div>
-          <div class="vc-size">ISO 大小: <strong>1.06 GB</strong> <span style="color:var(--accent-emerald); font-size:0.75rem;">(1.4版本 1.16 GB)</span></div>
-        </div>
-        <div class="vc-body">
-          <ul>
-            <li>修复所有用户反馈和已知问题</li>
-            <li>新增 Ghost 工具 (CGI-Plus、Ghost64、OneKeyGhost)</li>
-            <li>Microsoft Edge 升级至 149 版本 (Chromium 149)</li>
-            <li>新增远程软件 (第三方合集和 Windows 自带)</li>
-          </ul>
-        </div>
-      </div>
+                <div class="version-card reveal">
+                    <div class="vc-header">
+                        <span class="vc-tag">专业版</span>
+                        <div class="vc-title">lao6-PE 1.5 Pro</div>
+                        <div class="vc-size">ISO 大小: <strong>850.00 MB</strong> <span style="color:var(--accent-emerald); font-size:0.75rem;">(1.4版本 855.63 MB)</span></div>
+                    </div>
+                    <div class="vc-body">
+                        <ul>
+                            <li>新增 Ghost 工具 (CGI-Plus、Ghost64、OneKeyGhost)</li>
+                            <li>Microsoft Edge 升级至 149 版本 (Chromium 149)</li>
+                            <li>修复 Legacy BIOS 引导启动问题</li>
+                        </ul>
+                    </div>
+                </div>
 
-      <div class="version-card reveal">
-        <div class="vc-header">
-          <span class="vc-tag">旗舰精简版</span>
-          <div class="vc-title">lao6-PE 1.5 Pro Max</div>
-          <div class="vc-size">ISO 大小: <strong>1.05 GB</strong></div>
-          <div class="vc-desc">1.5 系列新增分支版本，基于 Ultra 精简，删除了远程软件。</div>
-        </div>
-        <div class="vc-body">
-          <ul>
-            <li>基于 Ultra 版本精简定制</li>
-            <li>移除远程软件，减小体积</li>
-            <li>保留 Ultra 其余全部功能</li>
-            <li>1.5 系列全新分支版本</li>
-          </ul>
-        </div>
-      </div>
+                <div class="version-card featured reveal">
+                    <div class="vc-header">
+                        <span class="vc-tag">旗舰版 <span class="featured-badge">推荐</span></span>
+                        <div class="vc-title">lao6-PE 1.5 Ultra</div>
+                        <div class="vc-size">ISO 大小: <strong>1.06 GB</strong> <span style="color:var(--accent-emerald); font-size:0.75rem;">(1.4版本 1.16 GB)</span></div>
+                    </div>
+                    <div class="vc-body">
+                        <ul>
+                            <li>修复所有用户反馈和已知问题</li>
+                            <li>新增 Ghost 工具 (CGI-Plus、Ghost64、OneKeyGhost)</li>
+                            <li>Microsoft Edge 升级至 149 版本 (Chromium 149)</li>
+                            <li>新增远程软件 (第三方合集和 Windows 自带)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="version-card reveal">
+                    <div class="vc-header">
+                        <span class="vc-tag">旗舰精简版</span>
+                        <div class="vc-title">lao6-PE 1.5 Pro Max</div>
+                        <div class="vc-size">ISO 大小: <strong>1.05 GB</strong></div>
+                        <div class="vc-desc">1.5 系列新增分支版本，基于 Ultra 精简，删除了远程软件。</div>
+                    </div>
+                    <div class="vc-body">
+                        <ul>
+                            <li>基于 Ultra 版本精简定制</li>
+                            <li>移除远程软件，减小体积</li>
+                            <li>保留 Ultra 其余全部功能</li>
+                            <li>1.5 系列全新分支版本</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="compare">
+            <div class="section-header reveal">
+                <div class="section-tag">// Compare</div>
+                <h2 class="section-title">版本功能对比</h2>
+                <p class="section-desc">一表看清四个版本的功能差异，快速找到最适合你的选择。</p>
+            </div>
+            <div class="compare-wrap reveal">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th>功能特性</th>
+                            <th>标准版</th>
+                            <th>Pro</th>
+                            <th>Ultra</th>
+                            <th>Pro Max</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ISO 体积</td>
+                            <td>440 MB</td>
+                            <td>850 MB</td>
+                            <td class="highlight-cell">1.06 GB</td>
+                            <td>1.05 GB</td>
+                        </tr>
+                        <tr>
+                            <td>Windows 11 内核</td>
+                            <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
+                        </tr>
+                        <tr>
+                            <td>网络支持</td>
+                            <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
+                        </tr>
+                        <tr>
+                            <td>声音支持</td>
+                            <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
+                        </tr>
+                        <tr>
+                            <td>完整工具</td>
+                            <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
+                        </tr>
+                        <tr>
+                            <td>微软 VC 库合集</td>
+                            <td class="cross">&mdash;</td>
+                            <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
+                        </tr>
+                        <tr>
+                            <td>Microsoft Edge 浏览器</td>
+                            <td class="cross">&mdash;</td>
+                            <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
+                        </tr>
+                        <tr>
+                            <td>搜狗输入法安装包</td>
+                            <td class="cross">&mdash;</td>
+                            <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
+                        </tr>
+                        <tr>
+                            <td>Legacy BIOS 启动模式</td>
+                            <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
+                        </tr>
+                        <tr>
+                            <td>UEFI 启动模式</td>
+                            <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
+                        </tr>
+                        <tr>
+                            <td>远程软件</td>
+                            <td class="cross">&mdash;</td>
+                            <td class="cross">&mdash;</td>
+                            <td class="check">&#10003;</td>
+                            <td class="cross">&mdash;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-brand">
+                <img src="logo.ico" alt="">
+                lao6-PE
+            </div>
+            <p class="footer-text">
+                lao6-PE 1.5 系列 &mdash; 基于 Windows 11 内核的高效 PE 维护系统<br>
+                &copy;2024-2026 lao6 OS Development Team（lao6 OS 开发团队）
+            </p>
+        </footer>
     </div>
-  </section>
 
-  <section id="compare">
-    <div class="section-header reveal">
-      <div class="section-tag">// Compare</div>
-      <h2 class="section-title">版本功能对比</h2>
-      <p class="section-desc">一表看清四个版本的功能差异，快速找到最适合你的选择。</p>
-    </div>
-    <div class="compare-wrap reveal">
-      <table class="compare-table">
-        <thead>
-          <tr>
-            <th>功能特性</th>
-            <th>标准版</th>
-            <th>Pro</th>
-            <th>Ultra</th>
-            <th>Pro Max</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>ISO 体积</td>
-            <td>440 MB</td>
-            <td>850 MB</td>
-            <td class="highlight-cell">1.06 GB</td>
-            <td>1.05 GB</td>
-          </tr>
-          <tr>
-            <td>Windows 11 内核</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-          </tr>
-          <tr>
-            <td>网络支持</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-          </tr>
-          <tr>
-            <td>声音支持</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-          </tr>
-          <tr>
-            <td>完整工具</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-          </tr>
-          <tr>
-            <td>微软 VC 库合集</td>
-            <td class="cross">&mdash;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-          </tr>
-          <tr>
-            <td>Microsoft Edge 浏览器</td>
-            <td class="cross">&mdash;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-          </tr>
-          <tr>
-            <td>搜狗输入法安装包</td>
-            <td class="cross">&mdash;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-          </tr>
-          <tr>
-            <td>Legacy BIOS 启动模式</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-          </tr>
-          <tr>
-            <td>UEFI 启动模式</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-          </tr>
-          <tr>
-            <td>远程软件</td>
-            <td class="cross">&mdash;</td>
-            <td class="cross">&mdash;</td>
-            <td class="check">&#10003;</td>
-            <td class="cross">&mdash;</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+    <script>
+        const modal = document.getElementById('dlModal');
 
-  <footer>
-    <div class="footer-brand">
-      <img src="logo.ico" alt="">
-      lao6-PE
-    </div>
-    <p class="footer-text">
-      lao6-PE 1.5 系列 &mdash; 基于 Windows 11 内核的高效 PE 维护系统<br>
-      &copy;2024-2026 lao6 OS Development Team（lao6 OS 开发团队）
-    </p>
-  </footer>
-</div>
+        function openModal() {
+            modal.classList.add('active');
+        }
 
-<script>
-  const modal = document.getElementById('dlModal');
-  function openModal() { modal.classList.add('active'); }
-  function closeModal() { modal.classList.remove('active'); }
-  document.getElementById('modalClose').addEventListener('click', closeModal);
-  modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
-  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+        function closeModal() {
+            modal.classList.remove('active');
+        }
 
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
+        // 新增：U盘制作工具 — 弹窗提示密码后跳转蓝奏云
+        function openLanzou() {
+            alert('前往蓝奏云网盘下载，访问密码为1234');
+            window.open('https://wwblk.lanzouu.com/b01bjixpih', '_blank');
+            // 可选：关闭模态框（让用户自行关闭，或者自动关闭）
+            // closeModal(); // 如果希望点击后自动关闭下载弹窗，可取消注释
+        }
 
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 60);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  reveals.forEach(el => observer.observe(el));
+        document.getElementById('modalClose').addEventListener('click', closeModal);
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) closeModal();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
 
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-    });
-  });
-</script>
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 20);
+        });
+
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('visible'), i * 60);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        reveals.forEach(el => observer.observe(el));
+
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
