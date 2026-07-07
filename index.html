@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>lao6-PE - 下载</title>
-    <link rel="icon" href="logo.ico" type="image/x-icon">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="logo.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;600&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
     <style>
         :root {
             --bg-deep: #05080e;
@@ -20,6 +20,7 @@
             --accent-amber: #f59e0b;
             --accent-rose: #f43f5e;
             --accent-violet: #8b5cf6;
+            --accent-purple: #a855f7;
             --text-primary: #f1f5f9;
             --text-secondary: #94a3b8;
             --text-muted: #64748b;
@@ -687,6 +688,7 @@
             font-size: 0.7rem;
             flex-shrink: 0;
         }
+        /* 各选项图标颜色 */
         .dl-option:nth-child(1) .dl-icon {
             background: rgba(59, 130, 246, 0.15);
             color: var(--accent-blue);
@@ -696,15 +698,14 @@
             color: var(--accent-emerald);
         }
         .dl-option:nth-child(3) .dl-icon {
+            background: rgba(168, 85, 247, 0.15);
+            color: var(--accent-purple);
+        }
+        .dl-option:nth-child(4) .dl-icon {
             background: rgba(245, 158, 11, 0.15);
             color: var(--accent-amber);
         }
-        .dl-option-note {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-            padding-left: 28px;
-        }
+        /* 悬停边框颜色 */
         .dl-option:nth-child(1):hover {
             border-color: rgba(59, 130, 246, 0.4);
         }
@@ -712,7 +713,16 @@
             border-color: rgba(16, 185, 129, 0.4);
         }
         .dl-option:nth-child(3):hover {
+            border-color: rgba(168, 85, 247, 0.4);
+        }
+        .dl-option:nth-child(4):hover {
             border-color: rgba(245, 158, 11, 0.4);
+        }
+        .dl-option-note {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            padding-left: 28px;
         }
 
         footer {
@@ -810,6 +820,7 @@
 
     <div class="watermark">此页面由 lao6 OS 开发团队 制作，Xiaomi MiMo Studio 辅助修复和编写</div>
 
+    <!-- ========== 下载模态框 ========== -->
     <div class="modal-overlay" id="dlModal">
         <div class="modal">
             <div class="modal-top-bar"></div>
@@ -818,6 +829,7 @@
                 <button class="modal-close" id="modalClose">&times;</button>
             </div>
             <div class="modal-body">
+                <!-- 1. 123网盘 -->
                 <a href="https://1812019632.share.123pan.cn/123pan/AH3rVv-I2ARh?pwd=H28G" target="_blank" rel="noopener" class="dl-option">
                     <div class="dl-option-title">
                         <span class="dl-icon">
@@ -827,6 +839,8 @@
                     </div>
                     <div class="dl-option-note">需登录，下载无需客户端和收费，下载不限速，可选择历史版本</div>
                 </a>
+
+                <!-- 2. QQ闪传 -->
                 <a href="https://qfile.qq.com/q/FjFehH6bAY" target="_blank" rel="noopener" class="dl-option">
                     <div class="dl-option-title">
                         <span class="dl-icon">
@@ -836,7 +850,22 @@
                     </div>
                     <div class="dl-option-note">无需登录、客户端、收费，下载不限速，只能下载最新版本</div>
                 </a>
-                <!-- 新增：U盘制作工具 -->
+
+                <!-- 3. 夸克网盘（新增） -->
+                <a href="https://pan.quark.cn/s/ef228403aa61" target="_blank" rel="noopener" class="dl-option">
+                    <div class="dl-option-title">
+                        <span class="dl-icon">
+                            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 8v8M8 12h8"/>
+                            </svg>
+                        </span>
+                        夸克网盘下载
+                    </div>
+                    <div class="dl-option-note">需要登录/客户端，非会员用户下载有限速，只提供最新系列版本</div>
+                </a>
+
+                <!-- 4. U盘制作工具 -->
                 <a href="javascript:void(0)" onclick="openLanzou()" class="dl-option">
                     <div class="dl-option-title">
                         <span class="dl-icon">
@@ -852,10 +881,11 @@
         </div>
     </div>
 
+    <!-- ========== 导航栏 ========== -->
     <nav id="nav">
         <div class="nav-inner">
             <a href="#" class="nav-brand">
-                <img src="logo.ico" alt="lao6-PE">
+                <img src="logo.ico" alt="lao6-PE" />
                 <span>lao6-PE</span>
             </a>
             <ul class="nav-links">
@@ -867,11 +897,14 @@
         </div>
     </nav>
 
+    <!-- ========== 主容器 ========== -->
     <div class="container">
+
+        <!-- Hero -->
         <section class="hero">
             <div class="hero-badge">1.5 版本已发布 &mdash; 全系列更新</div>
             <h1>
-                <span class="highlight">lao6-PE</span><br>
+                <span class="highlight">lao6-PE</span><br />
                 更好的 PE 维护系统
             </h1>
             <p class="hero-sub">做一个高端标杆的PE系统 | 当前用户量（07/04）：1019</p>
@@ -883,6 +916,7 @@
             </div>
         </section>
 
+        <!-- Stats -->
         <div class="stats-bar reveal">
             <div class="stat-item">
                 <div class="stat-num">1.5</div>
@@ -902,6 +936,7 @@
             </div>
         </div>
 
+        <!-- 更新日志 -->
         <section id="versions">
             <div class="section-header reveal">
                 <div class="section-tag">// Changelog</div>
@@ -975,6 +1010,7 @@
             </div>
         </section>
 
+        <!-- 版本对比 -->
         <section id="compare">
             <div class="section-header reveal">
                 <div class="section-tag">// Compare</div>
@@ -1077,16 +1113,17 @@
 
         <footer>
             <div class="footer-brand">
-                <img src="logo.ico" alt="">
+                <img src="logo.ico" alt="" />
                 lao6-PE
             </div>
             <p class="footer-text">
-                lao6-PE 1.5 系列 &mdash; 基于 Windows 11 内核的高效 PE 维护系统<br>
+                lao6-PE 1.5 系列 &mdash; 基于 Windows 11 内核的高效 PE 维护系统<br />
                 &copy;2024-2026 lao6 OS Development Team（lao6 OS 开发团队）
             </p>
         </footer>
     </div>
 
+    <!-- ========== JavaScript ========== -->
     <script>
         const modal = document.getElementById('dlModal');
 
@@ -1098,12 +1135,10 @@
             modal.classList.remove('active');
         }
 
-        // 新增：U盘制作工具 — 弹窗提示密码后跳转蓝奏云
+        // U盘制作工具 — 弹窗提示密码后跳转蓝奏云
         function openLanzou() {
             alert('前往蓝奏云网盘下载，访问密码为1234');
             window.open('https://wwblk.lanzouu.com/b01bjixpih', '_blank');
-            // 可选：关闭模态框（让用户自行关闭，或者自动关闭）
-            // closeModal(); // 如果希望点击后自动关闭下载弹窗，可取消注释
         }
 
         document.getElementById('modalClose').addEventListener('click', closeModal);
@@ -1114,11 +1149,13 @@
             if (e.key === 'Escape') closeModal();
         });
 
+        // 导航栏滚动效果
         const nav = document.getElementById('nav');
         window.addEventListener('scroll', () => {
             nav.classList.toggle('scrolled', window.scrollY > 20);
         });
 
+        // 滚动入场动画
         const reveals = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry, i) => {
@@ -1130,6 +1167,7 @@
         }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
         reveals.forEach(el => observer.observe(el));
 
+        // 平滑锚点跳转
         document.querySelectorAll('a[href^="#"]').forEach(a => {
             a.addEventListener('click', e => {
                 const target = document.querySelector(a.getAttribute('href'));
