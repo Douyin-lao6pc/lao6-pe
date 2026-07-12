@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>链接跳转</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f5f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+            padding: 40px;
+        }
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 4px solid #e0e4e9;
+            border-top-color: #4f7cff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 20px;
+        }
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        p {
+            color: #6b7a8f;
+            font-size: 16px;
+        }
+        .expired-message {
+            color: #e74c3c;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="spinner" id="spinner"></div>
+        <p id="statusText">正在跳转…</p>
+    </div>
+
+    <script>
+        (function() {
+            var TARGET_URL = ""; //链接
+            var EXPIRE_DATE = "2026/01/01"; // 日期
+
+            var spinner = document.getElementById('spinner');
+            var statusText = document.getElementById('statusText');
+
+            function getTodayParts() {
+                var now = new Date();
+                return {
+                    year: now.getFullYear(),
+                    month: now.getMonth() + 1,  // 1-12
+                    day: now.getDate()
+                };
+            }
+
+            function parseDateString(dateStr) {
+                var trimmed = (dateStr || "").trim();
+                if (trimmed === "") return null;
+                var parts = trimmed.match(/(\d{4})[\/\-](\d{1,2})[\/\-](\d{1,2})/);
+                if (!parts) return null;
+                var year = parseInt(parts[1], 10);
+                var month = parseInt(parts[2], 10);
+                var day = parseInt(parts[3], 10);
+                if (isNaN(year) || isNaN(month) || isNaN(day)) return null;
+                return { year, month, day };
+            }
+
+            function isDateAfter(date1, date2) {
+                if (!date1 || !date2) return false;
+                if (date1.year !== date2.year) return date1.year > date2.year;
+                if (date1.month !== date2.month) return date1.month > date2.month;
+                return date1.day > date2.day;
+            }
+
+            function isExpired(expireDateStr) {
+                if (!expireDateStr || expireDateStr.trim() === "") return false;
+                var expireParts = parseDateString(expireDateStr);
+                if (!expireParts) {
+                    console.warn("无效的过期日期格式，请使用 YYYY/MM/DD 或 YYYY-MM-DD");
+                    return false; 
+                }
+                var today = getTodayParts();
+                return isDateAfter(today, expireParts); 
+            }
+
+            var url = (TARGET_URL || "").trim();
+
+            if (url === "") {
+                statusText.textContent = "QQ闪传已下架，需要生成QQ闪传下载链接请联系";
+                spinner.style.display = "none";
+                alert("无链接");
+                return;
+            }
+
+            if (isExpired(EXPIRE_DATE)) {
+                statusText.textContent = "QQ闪传已下架，需要生成QQ闪传下载链接请联系";
+                statusText.className = "expired-message";
+                spinner.style.display = "none";
+                alert("链接已过期");
+                return;
+            }
+
+            window.location.replace(url);
+        })();
+    </script>
+</body>
+</html>
