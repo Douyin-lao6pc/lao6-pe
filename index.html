@@ -902,12 +902,12 @@
 
         <!-- Hero -->
         <section class="hero">
-            <div class="hero-badge">1.6 版本即将到来 &mdash; 敬请期待</div>
+            <div class="hero-badge">1.6 版本已发布 &mdash; 全系列更新</div>
             <h1>
                 <span class="highlight">lao6-PE</span><br />
                 更好的 PE 维护系统
             </h1>
-            <p class="hero-sub">做一个高端标杆的PE系统 | 当前用户量：停止记录</p>
+            <p class="hero-sub">做一个高端标杆的PE系统 | 当前用户量（07/22）：3336</p>
             <div class="hero-actions">
                 <button class="btn btn-primary" onclick="openModal()">
                     <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -919,7 +919,7 @@
         <!-- Stats -->
         <div class="stats-bar reveal">
             <div class="stat-item">
-                <div class="stat-num">未定</div>
+                <div class="stat-num">1.6</div>
                 <div class="stat-label">最新版本</div>
             </div>
             <div class="stat-item">
@@ -941,21 +941,25 @@
             <div class="section-header reveal">
                 <div class="section-tag">// Changelog</div>
                 <h2 class="section-title">更新日志</h2>
-                <p class="section-desc">用户量：停止记录</p>
+                <p class="section-desc">用户量（2026/07/22）：3336</p>
             </div>
             <div class="version-grid">
                 <div class="version-card reveal">
                     <div class="vc-header">
                         <span class="vc-tag">标准版</span>
-                        <div class="vc-title">lao6-PE 1.5 标准版</div>
-                        <div class="vc-size">ISO 大小: <strong>440.00 MB</strong> <span style="color:var(--accent-emerald); font-size:0.75rem;">(1.4版本 602.03 MB)</span></div>
+                        <div class="vc-title">lao6-PE 1.6 标准版</div>
+                        <div class="vc-size">ISO 大小: <strong>459.00 MB</strong> <span style="color:var(--accent-emerald); font-size:0.75rem;">(1.5版本 440.00 MB)</span></div>
                     </div>
                     <div class="vc-body">
                         <ul>
-                            <li>Windows 11 内核，与其他分支版本一致</li>
-                            <li>新增 Ghost 工具 (CGI-Plus、Ghost64、OneKeyGhost)</li>
-                            <li>保留 Windows Installer (MSI 安装包工具)</li>
-                            <li>修复 Legacy BIOS 引导启动问题</li>
+                            <li>加入Windows 11 OOBE 自动部署工具</li>
+                            <li>加入工具：Crystal Disk Info、CPU-Z、键盘测试工具</li>
+                            <li>加入更多的驱动，网卡驱动增加支持芯片：苹果笔记本/台式、高通、博通</li>
+                            <li>修复VMware Workition 17虚拟机在低分辨率下启动蓝屏的问题</li>
+                            <li>开始菜单软碟通因用户反馈，已将其从软件文件夹移动到工具文件夹中</li>
+                            <li>删除原有屏幕键盘（因用户投诉操作繁琐），以体积更小、功能简单的屏幕键盘代替</li>
+                            <li>删除搜狗输入法安装包，将搜狗输入法内置，需要任务栏右下角切换</li>
+                            <li>由于微软UEFI+安全启动证书到期，所以其版本分为CA2011、CA2023，如果是Legacy BIOS或UEFI没有启用安全启动的用户不用考虑，随便选择</li>
                         </ul>
                     </div>
                 </div>
@@ -964,13 +968,19 @@
                     <div class="vc-header">
                         <span class="vc-tag">专业版</span>
                         <div class="vc-title">lao6-PE 1.5 Pro</div>
-                        <div class="vc-size">ISO 大小: <strong>850.00 MB</strong> <span style="color:var(--accent-emerald); font-size:0.75rem;">(1.4版本 855.63 MB)</span></div>
+                        <div class="vc-size">ISO 大小: <strong>799.00 MB</strong> <span style="color:var(--accent-emerald); font-size:0.75rem;">(1.5版本 940.00 MB)</span></div>
                     </div>
                     <div class="vc-body">
                         <ul>
-                            <li>新增 Ghost 工具 (CGI-Plus、Ghost64、OneKeyGhost)</li>
-                            <li>Microsoft Edge 升级至 149 版本 (Chromium 149)</li>
-                            <li>修复 Legacy BIOS 引导启动问题</li>
+                            <li>加入Windows 11 OOBE 自动部署工具</li>
+                            <li>加入工具：Crystal Disk Info、CPU-Z、键盘测试工具</li>
+                            <li>加入更多的驱动，网卡驱动增加支持芯片：苹果笔记本/台式、高通、博通</li>
+                            <li>修复VMware Workition 17虚拟机在低分辨率下启动蓝屏的问题</li>
+                            <li>Microsoft Edge 升级至150版本（Chromium 150）</li>
+                            <li>开始菜单软碟通因用户反馈，已将其从软件文件夹移动到工具文件夹中</li>
+                            <li>删除原有屏幕键盘（因用户投诉操作繁琐），以体积更小、功能简单的屏幕键盘代替</li>
+                            <li>删除搜狗输入法安装包，将搜狗输入法内置，需要任务栏右下角切换</li>
+                            <li>由于微软UEFI+安全启动证书到期，所以其版本分为CA2011、CA2023，如果是Legacy BIOS或UEFI没有启用安全启动的用户不用考虑，随便选择</li>
                         </ul>
                     </div>
                 </div>
@@ -979,31 +989,41 @@
                     <div class="vc-header">
                         <span class="vc-tag">旗舰版 <span class="featured-badge">推荐</span></span>
                         <div class="vc-title">lao6-PE 1.5 Ultra</div>
-                        <div class="vc-size">ISO 大小: <strong>1.06 GB</strong> <span style="color:var(--accent-emerald); font-size:0.75rem;">(1.4版本 1.16 GB)</span></div>
+                        <div class="vc-size">ISO 大小: <strong>947.00 MB</strong> <span style="color:var(--accent-emerald); font-size:0.75rem;">(1.5版本 1.06 GB)</span></div>
                     </div>
                     <div class="vc-body">
                         <ul>
-                            <li>修复所有用户反馈和已知问题</li>
-                            <li>新增 Ghost 工具 (CGI-Plus、Ghost64、OneKeyGhost)</li>
-                            <li>Microsoft Edge 升级至 149 版本 (Chromium 149)</li>
-                            <li>新增远程软件 (第三方合集和 Windows 自带)</li>
+                            <li>加入Windows 11 OOBE 自动部署工具</li>
+                            <li>加入工具：Crystal Disk Info、CPU-Z、键盘测试工具</li>
+                            <li>加入更多的驱动，网卡驱动增加支持芯片：苹果笔记本/台式、高通、博通</li>
+                            <li>修复VMware Workition 17虚拟机在低分辨率下启动蓝屏的问题</li>
+                            <li>Microsoft Edge 升级至150版本（Chromium 150）</li>
+                            <li>开始菜单软碟通因用户反馈，已将其从软件文件夹移动到工具文件夹中</li>
+                            <li>删除原有屏幕键盘（因用户投诉操作繁琐），以体积更小、功能简单的屏幕键盘代替</li>
+                            <li>删除搜狗输入法安装包，将搜狗输入法内置，需要任务栏右下角切换</li>
+                            <li>由于微软UEFI+安全启动证书到期，所以其版本分为CA2011、CA2023，如果是Legacy BIOS或UEFI没有启用安全启动的用户不用考虑，随便选择</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="version-card reveal">
                     <div class="vc-header">
-                        <span class="vc-tag">旗舰精简版</span>
-                        <div class="vc-title">lao6-PE 1.5 Pro Max</div>
-                        <div class="vc-size">ISO 大小: <strong>1.05 GB</strong></div>
-                        <div class="vc-desc">1.5 系列新增分支版本，基于 Ultra 精简，删除了远程软件。</div>
+                        <span class="vc-tag">旗舰阉割版</span>
+                        <div class="vc-title">lao6-PE 1.6 Pro Max</div>
+                        <div class="vc-size">ISO 大小: <strong>943.00 MB</strong> <span style="color:var(--accent-emerald); font-size:0.75rem;">(1.5版本 1.05 GB)</span></div>
+                        <div class="vc-desc">基于 Ultra 精简，删除了远程软件。</div>
                     </div>
                     <div class="vc-body">
                         <ul>
-                            <li>基于 Ultra 版本精简定制</li>
-                            <li>移除远程软件，减小体积</li>
-                            <li>保留 Ultra 其余全部功能</li>
-                            <li>1.5 系列全新分支版本</li>
+                            <li>加入Windows 11 OOBE 自动部署工具</li>
+                            <li>加入工具：Crystal Disk Info、CPU-Z、键盘测试工具</li>
+                            <li>加入更多的驱动，网卡驱动增加支持芯片：苹果笔记本/台式、高通、博通</li>
+                            <li>修复VMware Workition 17虚拟机在低分辨率下启动蓝屏的问题</li>
+                            <li>Microsoft Edge 升级至150版本（Chromium 150）</li>
+                            <li>开始菜单软碟通因用户反馈，已将其从软件文件夹移动到工具文件夹中</li>
+                            <li>删除原有屏幕键盘（因用户投诉操作繁琐），以体积更小、功能简单的屏幕键盘代替</li>
+                            <li>删除搜狗输入法安装包，将搜狗输入法内置，需要任务栏右下角切换</li>
+                            <li>由于微软UEFI+安全启动证书到期，所以其版本分为CA2011、CA2023，如果是Legacy BIOS或UEFI没有启用安全启动的用户不用考虑，随便选择</li>
                         </ul>
                     </div>
                 </div>
@@ -1031,10 +1051,10 @@
                     <tbody>
                         <tr>
                             <td>ISO 体积</td>
-                            <td>440 MB</td>
-                            <td>850 MB</td>
-                            <td class="highlight-cell">1.06 GB</td>
-                            <td>1.05 GB</td>
+                            <td>459 MB</td>
+                            <td>799 MB</td>
+                            <td>947 MB</td>
+                            <td>943 MB</td>
                         </tr>
                         <tr>
                             <td>Windows 11 内核</td>
@@ -1078,7 +1098,13 @@
                             <td class="check">&#10003;</td>
                             <td class="check">&#10003;</td>
                         </tr>
-                        <!-- 已删除“搜狗输入法安装包”行 -->
+                        <tr>
+                            <td>搜狗输入法</td>
+                            <td class="cross">&mdash;</td>
+                            <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
+                        </tr>
                         <tr>
                             <td>Legacy BIOS 启动模式</td>
                             <td class="check">&#10003;</td>
@@ -1111,7 +1137,7 @@
                 lao6-PE
             </div>
             <p class="footer-text">
-                lao6-PE 1.5 系列 &mdash; 基于 Windows 11 内核的高效 PE 维护系统<br />
+                lao6-PE  &mdash; 做一个高端标杆的PE系统<br />
                 &copy;2024-2026 lao6 OS Development Team（lao6 OS 开发团队）
             </p>
         </footer>
@@ -1119,36 +1145,23 @@
 
     <!-- ========== JavaScript ========== -->
     <script>
-        // ---------- 公告内容 ----------
-        var NOTICE_MSG = '1.6版本即将到来，目前关闭下载，1.6和其他版本下载开放时间为2026/7/23 00:10:00，感谢您对 lao6 OS 开发团队 的支持。';
+        const modal = document.getElementById('dlModal');
 
-        // ---------- DOM 引用 ----------
-        var modal = document.getElementById('dlModal');
-        var modalCloseBtn = document.getElementById('modalClose');
-
-        // ---------- 模态框控制 ----------
         function openModal() {
             modal.classList.add('active');
-            // 给浏览器一点时间渲染模态框，再弹出公告
-            setTimeout(function() {
-                alert(NOTICE_MSG);
-                // 公告关闭后，关闭模态框
-                closeModal();
-            }, 80);
         }
 
         function closeModal() {
             modal.classList.remove('active');
         }
 
-        // ---------- U盘制作工具（蓝奏云） ----------
+        // U盘制作工具 — 弹窗提示密码后跳转蓝奏云
         function openLanzou() {
             alert('前往蓝奏云网盘下载，访问密码为1234');
             window.open('https://wwblk.lanzouu.com/b01bjixpih', '_blank');
         }
 
-        // ---------- 模态框关闭事件 ----------
-        modalCloseBtn.addEventListener('click', closeModal);
+        document.getElementById('modalClose').addEventListener('click', closeModal);
         modal.addEventListener('click', function(e) {
             if (e.target === modal) closeModal();
         });
@@ -1156,45 +1169,33 @@
             if (e.key === 'Escape') closeModal();
         });
 
-        // ---------- 导航栏滚动效果 ----------
-        var nav = document.getElementById('nav');
-        window.addEventListener('scroll', function() {
+        // 导航栏滚动效果
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
             nav.classList.toggle('scrolled', window.scrollY > 20);
         });
 
-        // ---------- 滚动入场动画 ----------
-        var reveals = document.querySelectorAll('.reveal');
-        var observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry, i) {
+        // 滚动入场动画
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
                 if (entry.isIntersecting) {
-                    setTimeout(function() {
-                        entry.target.classList.add('visible');
-                    }, i * 60);
+                    setTimeout(() => entry.target.classList.add('visible'), i * 60);
                     observer.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-        reveals.forEach(function(el) {
-            observer.observe(el);
-        });
+        reveals.forEach(el => observer.observe(el));
 
-        // ---------- 平滑锚点跳转 ----------
-        document.querySelectorAll('a[href^="#"]').forEach(function(a) {
-            a.addEventListener('click', function(e) {
-                var target = document.querySelector(a.getAttribute('href'));
+        // 平滑锚点跳转
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                const target = document.querySelector(a.getAttribute('href'));
                 if (target) {
                     e.preventDefault();
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
-        });
-
-        // ---------- 页面加载完成后弹出公告 ----------
-        window.addEventListener('load', function() {
-            // 延迟一点点，确保页面完全渲染
-            setTimeout(function() {
-                alert(NOTICE_MSG);
-            }, 200);
         });
     </script>
 </body>
