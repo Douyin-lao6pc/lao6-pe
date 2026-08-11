@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>lao6-PE 显卡驱动安装教程</title>
+    <title>视频播放</title>
     <style>
         body {
             background: #111;
@@ -19,8 +19,16 @@
     </style>
 </head>
 <body>
-    <video src="installdriver.mp4" controls autoplay>
-        你的浏览器不支持视频播放，请使用现代浏览器打开。
+    <!-- preload="auto" 预加载；增加error事件提示 -->
+    <video id="vid" src="installdriver.mp4" controls preload="auto">
+        浏览器不支持视频播放
     </video>
+
+    <script>
+        const video = document.getElementById('vid');
+        video.addEventListener('error', ()=>{
+            alert('视频加载失败！\n1.检查文件名大小写\n2.确认视频编码为H.264+AAC\n3.文件上传是否完整');
+        })
+    </script>
 </body>
 </html>
