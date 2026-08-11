@@ -1,34 +1,49 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title>视频播放</title>
-    <style>
-        body {
-            background: #111;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-        }
-        video {
-            max-width: 95%;
-            max-height: 95vh;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>视频播放</title>
+<style>
+body {
+    background:#111;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    margin:0;
+}
+video {
+    max-width:95%;
+    max-height:90vh;
+}
+#status {
+    color:#cccccc;
+    position:fixed;
+    bottom:16px;
+}
+</style>
 </head>
 <body>
-    <!-- preload="auto" 预加载；增加error事件提示 -->
-    <video id="vid" src="installdriver.mp4" controls preload="auto">
-        浏览器不支持视频播放
-    </video>
+<video id="player" controls preload="metadata">
+    <source src="installdriver_web.mp4" type="video/mp4">
+    当前浏览器不支持视频播放
+</video>
+<div id="status"></div>
 
-    <script>
-        const video = document.getElementById('vid');
-        video.addEventListener('error', ()=>{
-            alert('视频加载失败！\n1.检查文件名大小写\n2.确认视频编码为H.264+AAC\n3.文件上传是否完整');
-        })
-    </script>
+<script>
+const video = document.getElementById("player");
+const statusText = document.getElementById("status");
+
+video.addEventListener("waiting", () => {
+    statusText.innerText = "正在缓冲，请等待...";
+});
+video.addEventListener("playing", () => {
+    statusText.innerText = "播放正常";
+});
+video.addEventListener("error", () => {
+    statusText.innerText = "视频加载异常，请检查文件名大小写";
+});
+</script>
 </body>
 </html>
