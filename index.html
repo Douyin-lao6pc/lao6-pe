@@ -35,6 +35,7 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         html {
             scroll-behavior: smooth;
         }
@@ -48,15 +49,15 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-            opacity: 0.025;
-            pointer-events: none;
-            z-index: 9999;
-        }
+            body::before {
+                content: '';
+                position: fixed;
+                inset: 0;
+                background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+                opacity: 0.025;
+                pointer-events: none;
+                z-index: 9999;
+            }
 
         .ambient {
             position: fixed;
@@ -65,6 +66,7 @@
             pointer-events: none;
             z-index: 0;
         }
+
         .ambient-1 {
             width: 600px;
             height: 600px;
@@ -73,6 +75,7 @@
             left: -200px;
             animation: drift1 18s ease-in-out infinite;
         }
+
         .ambient-2 {
             width: 500px;
             height: 500px;
@@ -81,6 +84,7 @@
             right: -150px;
             animation: drift2 22s ease-in-out infinite;
         }
+
         .ambient-3 {
             width: 400px;
             height: 400px;
@@ -89,29 +93,32 @@
             left: 30%;
             animation: drift3 20s ease-in-out infinite;
         }
+
         @keyframes drift1 {
-            0%,
-            100% {
+            0%, 100% {
                 transform: translate(0, 0);
             }
+
             50% {
                 transform: translate(80px, 60px);
             }
         }
+
         @keyframes drift2 {
-            0%,
-            100% {
+            0%, 100% {
                 transform: translate(0, 0);
             }
+
             50% {
                 transform: translate(-60px, -80px);
             }
         }
+
         @keyframes drift3 {
-            0%,
-            100% {
+            0%, 100% {
                 transform: translate(0, 0);
             }
+
             50% {
                 transform: translate(-40px, 50px);
             }
@@ -157,9 +164,11 @@
             border-bottom: 1px solid rgba(59, 130, 246, 0.08);
             transition: box-shadow 0.3s;
         }
-        nav.scrolled {
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
-        }
+
+            nav.scrolled {
+                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+            }
+
         .nav-inner {
             display: flex;
             align-items: center;
@@ -169,6 +178,7 @@
             margin: 0 auto;
             padding: 0 24px;
         }
+
         .nav-brand {
             display: flex;
             align-items: center;
@@ -176,42 +186,48 @@
             text-decoration: none;
             color: var(--text-primary);
         }
-        .nav-brand img {
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
-        }
-        .nav-brand span {
-            font-family: 'Noto Sans SC', sans-serif;
-            font-weight: 700;
-            font-size: 1.15rem;
-            letter-spacing: 0.01em;
-        }
+
+            .nav-brand img {
+                width: 32px;
+                height: 32px;
+                border-radius: 8px;
+            }
+
+            .nav-brand span {
+                font-family: 'Noto Sans SC', sans-serif;
+                font-weight: 700;
+                font-size: 1.15rem;
+                letter-spacing: 0.01em;
+            }
+
         .nav-links {
             display: flex;
             gap: 8px;
             list-style: none;
         }
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.88rem;
-            font-weight: 500;
-            padding: 8px 16px;
-            border-radius: 8px;
-            transition: all 0.2s;
-            cursor: pointer;
-        }
-        .nav-links a:hover {
-            color: var(--text-primary);
-            background: rgba(59, 130, 246, 0.08);
-        }
+
+            .nav-links a {
+                color: var(--text-secondary);
+                text-decoration: none;
+                font-size: 0.88rem;
+                font-weight: 500;
+                padding: 8px 16px;
+                border-radius: 8px;
+                transition: all 0.2s;
+                cursor: pointer;
+            }
+
+                .nav-links a:hover {
+                    color: var(--text-primary);
+                    background: rgba(59, 130, 246, 0.08);
+                }
 
         .hero {
             padding: 160px 0 80px;
             text-align: center;
             position: relative;
         }
+
         .hero-badge {
             display: inline-flex;
             align-items: center;
@@ -226,20 +242,22 @@
             margin-bottom: 32px;
             animation: fadeUp 0.6s ease both;
         }
-        .hero-badge::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            background: var(--accent-emerald);
-            border-radius: 50%;
-            animation: pulse-dot 2s ease-in-out infinite;
-        }
+
+            .hero-badge::before {
+                content: '';
+                width: 6px;
+                height: 6px;
+                background: var(--accent-emerald);
+                border-radius: 50%;
+                animation: pulse-dot 2s ease-in-out infinite;
+            }
+
         @keyframes pulse-dot {
-            0%,
-            100% {
+            0%, 100% {
                 opacity: 1;
                 transform: scale(1);
             }
+
             50% {
                 opacity: 0.5;
                 transform: scale(1.4);
@@ -255,12 +273,14 @@
             margin-bottom: 24px;
             animation: fadeUp 0.6s ease 0.1s both;
         }
-        .hero h1 .highlight {
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+
+            .hero h1 .highlight {
+                background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+
         .hero-sub {
             font-size: 1.15rem;
             color: var(--text-secondary);
@@ -269,6 +289,7 @@
             line-height: 1.7;
             animation: fadeUp 0.6s ease 0.2s both;
         }
+
         .hero-actions {
             display: flex;
             gap: 16px;
@@ -276,6 +297,7 @@
             flex-wrap: wrap;
             animation: fadeUp 0.6s ease 0.3s both;
         }
+
         .btn {
             display: inline-flex;
             align-items: center;
@@ -290,21 +312,24 @@
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             font-family: inherit;
         }
+
         .btn-primary {
             background: linear-gradient(135deg, var(--accent-blue), #2563eb);
             color: #fff;
             box-shadow: 0 4px 20px rgba(59, 130, 246, 0.25);
         }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15), 0 8px 30px rgba(59, 130, 246, 0.35);
-        }
+
+            .btn-primary:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15), 0 8px 30px rgba(59, 130, 246, 0.35);
+            }
 
         @keyframes fadeUp {
             from {
                 opacity: 0;
                 transform: translateY(24px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -321,11 +346,13 @@
             margin-bottom: 96px;
             animation: fadeUp 0.6s ease 0.4s both;
         }
+
         .stat-item {
             background: var(--bg-surface);
             padding: 28px 20px;
             text-align: center;
         }
+
         .stat-num {
             font-family: 'JetBrains Mono', monospace;
             font-size: 1.6rem;
@@ -333,6 +360,7 @@
             color: var(--accent-cyan);
             margin-bottom: 4px;
         }
+
         .stat-label {
             font-size: 0.78rem;
             color: var(--text-muted);
@@ -343,10 +371,12 @@
         section {
             margin-bottom: 96px;
         }
+
         .section-header {
             text-align: center;
             margin-bottom: 56px;
         }
+
         .section-tag {
             display: inline-block;
             font-family: 'JetBrains Mono', monospace;
@@ -357,12 +387,14 @@
             letter-spacing: 0.15em;
             margin-bottom: 12px;
         }
+
         .section-title {
             font-family: 'Syne', sans-serif;
             font-weight: 700;
             font-size: clamp(1.8rem, 3.5vw, 2.6rem);
             letter-spacing: -0.03em;
         }
+
         .section-desc {
             color: var(--text-secondary);
             max-width: 520px;
@@ -372,9 +404,10 @@
 
         .version-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 24px;
         }
+
         .version-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -386,38 +419,86 @@
             display: flex;
             flex-direction: column;
         }
-        .version-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-        }
-        .version-card.featured {
-            border-color: rgba(59, 130, 246, 0.3);
-            box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.1), 0 8px 30px rgba(59, 130, 246, 0.08);
-        }
-        .version-card.featured:hover {
-            box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.2), 0 20px 60px rgba(59, 130, 246, 0.12);
-        }
+
+            .version-card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+            }
+
+            .version-card.featured {
+                border-color: rgba(59, 130, 246, 0.3);
+                box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.1), 0 8px 30px rgba(59, 130, 246, 0.08);
+            }
+
+                .version-card.featured:hover {
+                    box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.2), 0 20px 60px rgba(59, 130, 246, 0.12);
+                }
 
         .vc-header {
             padding: 28px 28px 0;
             position: relative;
         }
-        .vc-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-        }
-        .version-card:nth-child(1) .vc-header::before {
+
+            .vc-header::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 3px;
+            }
+
+        /* 各版本颜色 */
+        .card-standard .vc-header::before {
             background: linear-gradient(90deg, var(--accent-emerald), #34d399);
         }
-        .version-card:nth-child(2) .vc-header::before {
+
+        .card-standard .vc-tag {
+            background: rgba(16, 185, 129, 0.12);
+            color: var(--accent-emerald);
+        }
+
+        .card-standard .vc-body li::before {
+            background: rgba(16, 185, 129, 0.5);
+        }
+
+        .card-pro .vc-header::before {
             background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
         }
-        .version-card:nth-child(3) .vc-header::before {
+
+        .card-pro .vc-tag {
+            background: rgba(59, 130, 246, 0.12);
+            color: var(--accent-blue);
+        }
+
+        .card-pro .vc-body li::before {
+            background: rgba(59, 130, 246, 0.5);
+        }
+
+        .card-ultra .vc-header::before {
             background: linear-gradient(90deg, var(--accent-amber), #fbbf24);
+        }
+
+        .card-ultra .vc-tag {
+            background: rgba(245, 158, 11, 0.12);
+            color: var(--accent-amber);
+        }
+
+        .card-ultra .vc-body li::before {
+            background: rgba(245, 158, 11, 0.5);
+        }
+
+        .card-lite .vc-header::before {
+            background: linear-gradient(90deg, var(--accent-purple), #c084fc);
+        }
+
+        .card-lite .vc-tag {
+            background: rgba(168, 85, 247, 0.14);
+            color: var(--accent-purple);
+        }
+
+        .card-lite .vc-body li::before {
+            background: rgba(168, 85, 247, 0.5);
         }
 
         .vc-tag {
@@ -430,23 +511,7 @@
             margin-bottom: 14px;
             letter-spacing: 0.05em;
         }
-        .version-card:nth-child(1) .vc-tag {
-            background: rgba(16, 185, 129, 0.12);
-            color: var(--accent-emerald);
-        }
-        .version-card:nth-child(2) .vc-tag {
-            background: rgba(59, 130, 246, 0.12);
-            color: var(--accent-blue);
-        }
-        .version-card:nth-child(3) .vc-tag {
-            background: rgba(245, 158, 11, 0.12);
-            color: var(--accent-amber);
-        }
 
-        .featured .vc-tag {
-            background: rgba(59, 130, 246, 0.15);
-            color: var(--accent-blue);
-        }
         .featured-badge {
             display: inline-block;
             font-size: 0.65rem;
@@ -467,16 +532,19 @@
             letter-spacing: -0.02em;
             margin-bottom: 6px;
         }
+
         .vc-size {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.82rem;
             color: var(--text-muted);
             margin-bottom: 4px;
         }
-        .vc-size strong {
-            color: var(--text-secondary);
-            font-weight: 600;
-        }
+
+            .vc-size strong {
+                color: var(--text-secondary);
+                font-weight: 600;
+            }
+
         .vc-desc {
             font-size: 0.85rem;
             color: var(--text-secondary);
@@ -488,85 +556,88 @@
             padding: 20px 28px;
             flex: 1;
         }
-        .vc-body ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .vc-body li {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            padding-left: 22px;
-            position: relative;
-            line-height: 1.5;
-        }
-        .vc-body li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 7px;
-            width: 8px;
-            height: 8px;
-            border-radius: 2px;
-            transform: rotate(45deg);
-        }
-        .version-card:nth-child(1) .vc-body li::before {
-            background: rgba(16, 185, 129, 0.5);
-        }
-        .version-card:nth-child(2) .vc-body li::before {
-            background: rgba(59, 130, 246, 0.5);
-        }
-        .version-card:nth-child(3) .vc-body li::before {
-            background: rgba(245, 158, 11, 0.5);
-        }
+
+            .vc-body ul {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .vc-body li {
+                font-size: 0.85rem;
+                color: var(--text-secondary);
+                padding-left: 22px;
+                position: relative;
+                line-height: 1.5;
+            }
+
+                .vc-body li::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 7px;
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 2px;
+                    transform: rotate(45deg);
+                }
 
         .compare-wrap {
             overflow-x: auto;
             border-radius: var(--radius);
             border: 1px solid var(--border);
         }
+
         .compare-table {
             width: 100%;
             border-collapse: collapse;
             min-width: 700px;
         }
-        .compare-table th,
-        .compare-table td {
-            padding: 16px 20px;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-            font-size: 0.88rem;
-        }
-        .compare-table th {
-            background: var(--bg-surface);
-            color: var(--text-muted);
-            font-weight: 600;
-            font-size: 0.78rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            position: sticky;
-            top: 0;
-        }
-        .compare-table td:first-child {
-            font-weight: 600;
-            color: var(--text-primary);
-            white-space: nowrap;
-        }
-        .compare-table tbody tr {
-            background: var(--bg-card);
-            transition: background 0.2s;
-        }
-        .compare-table tbody tr:hover {
-            background: var(--bg-card-hover);
-        }
+
+            .compare-table th,
+            .compare-table td {
+                padding: 16px 20px;
+                text-align: left;
+                border-bottom: 1px solid var(--border);
+                font-size: 0.88rem;
+            }
+
+            .compare-table th {
+                background: var(--bg-surface);
+                color: var(--text-muted);
+                font-weight: 600;
+                font-size: 0.78rem;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                position: sticky;
+                top: 0;
+            }
+
+            .compare-table td:first-child {
+                font-weight: 600;
+                color: var(--text-primary);
+                white-space: nowrap;
+            }
+
+            .compare-table tbody tr {
+                background: var(--bg-card);
+                transition: background 0.2s;
+            }
+
+                .compare-table tbody tr:hover {
+                    background: var(--bg-card-hover);
+                }
+
         .check {
             color: var(--accent-emerald);
             font-weight: 700;
         }
+
         .cross {
             color: var(--text-muted);
         }
+
         .highlight-cell {
             color: var(--accent-blue);
             font-weight: 600;
@@ -585,10 +656,12 @@
             pointer-events: none;
             transition: opacity 0.3s ease;
         }
-        .modal-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
+
+            .modal-overlay.active {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
         .modal {
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -599,25 +672,30 @@
             transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
             overflow: hidden;
         }
+
         .modal-overlay.active .modal {
             transform: translateY(0) scale(1);
         }
+
         .modal-top-bar {
             height: 3px;
             background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan), var(--accent-violet));
         }
+
         .modal-header {
             padding: 28px 28px 0;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
-        .modal-header h3 {
-            font-family: 'Syne', sans-serif;
-            font-weight: 700;
-            font-size: 1.2rem;
-            letter-spacing: -0.01em;
-        }
+
+            .modal-header h3 {
+                font-family: 'Syne', sans-serif;
+                font-weight: 700;
+                font-size: 1.2rem;
+                letter-spacing: -0.01em;
+            }
+
         .modal-close {
             width: 32px;
             height: 32px;
@@ -633,17 +711,20 @@
             font-size: 1.1rem;
             font-family: inherit;
         }
-        .modal-close:hover {
-            color: var(--text-primary);
-            border-color: rgba(244, 63, 94, 0.4);
-            background: rgba(244, 63, 94, 0.08);
-        }
+
+            .modal-close:hover {
+                color: var(--text-primary);
+                border-color: rgba(244, 63, 94, 0.4);
+                background: rgba(244, 63, 94, 0.08);
+            }
+
         .modal-body {
             padding: 24px 28px 28px;
             display: flex;
             flex-direction: column;
             gap: 16px;
         }
+
         .dl-option {
             background: var(--bg-surface);
             border: 1px solid var(--border);
@@ -655,11 +736,13 @@
             display: block;
             cursor: pointer;
         }
-        .dl-option:hover {
-            border-color: rgba(59, 130, 246, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-        }
+
+            .dl-option:hover {
+                border-color: rgba(59, 130, 246, 0.3);
+                transform: translateY(-2px);
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+            }
+
         .dl-option-title {
             font-weight: 700;
             font-size: 0.95rem;
@@ -668,37 +751,45 @@
             align-items: center;
             gap: 8px;
         }
-        .dl-option-title .dl-icon {
-            width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-            flex-shrink: 0;
-        }
+
+            .dl-option-title .dl-icon {
+                width: 20px;
+                height: 20px;
+                border-radius: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 0.7rem;
+                flex-shrink: 0;
+            }
+
         .dl-option:nth-child(1) .dl-icon {
             background: rgba(59, 130, 246, 0.15);
             color: var(--accent-blue);
         }
+
         .dl-option:nth-child(2) .dl-icon {
             background: rgba(16, 185, 129, 0.15);
             color: var(--accent-emerald);
         }
+
         .dl-option:nth-child(3) .dl-icon {
             background: rgba(168, 85, 247, 0.15);
             color: var(--accent-purple);
         }
+
         .dl-option:nth-child(1):hover {
             border-color: rgba(59, 130, 246, 0.4);
         }
+
         .dl-option:nth-child(2):hover {
             border-color: rgba(16, 185, 129, 0.4);
         }
+
         .dl-option:nth-child(3):hover {
             border-color: rgba(168, 85, 247, 0.4);
         }
+
         .dl-option-note {
             font-size: 0.78rem;
             color: var(--text-muted);
@@ -711,6 +802,7 @@
             padding: 48px 0;
             text-align: center;
         }
+
         .footer-brand {
             font-family: 'Noto Sans SC', sans-serif;
             font-weight: 700;
@@ -721,11 +813,13 @@
             justify-content: center;
             gap: 8px;
         }
-        .footer-brand img {
-            width: 20px;
-            height: 20px;
-            border-radius: 4px;
-        }
+
+            .footer-brand img {
+                width: 20px;
+                height: 20px;
+                border-radius: 4px;
+            }
+
         .footer-text {
             font-size: 0.8rem;
             color: var(--text-muted);
@@ -737,41 +831,50 @@
             transform: translateY(30px);
             transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+
+            .reveal.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
 
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
+
             .stats-bar {
                 grid-template-columns: repeat(2, 1fr);
             }
+
             .hero {
                 padding: 130px 0 60px;
             }
+
             .version-grid {
                 grid-template-columns: 1fr;
             }
+
             section {
                 margin-bottom: 64px;
             }
+
             .hero-actions {
                 flex-direction: column;
                 align-items: center;
             }
+
             .btn {
                 width: 100%;
                 max-width: 280px;
                 justify-content: center;
             }
         }
+
         @media (max-width: 480px) {
             .stats-bar {
                 grid-template-columns: 1fr;
             }
+
             .container {
                 padding: 0 16px;
             }
@@ -780,16 +883,19 @@
         ::-webkit-scrollbar {
             width: 6px;
         }
+
         ::-webkit-scrollbar-track {
             background: var(--bg-deep);
         }
+
         ::-webkit-scrollbar-thumb {
             background: var(--border);
             border-radius: 3px;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--text-muted);
-        }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: var(--text-muted);
+            }
     </style>
 </head>
 <body>
@@ -810,35 +916,30 @@
                 <button class="modal-close" id="modalClose">&times;</button>
             </div>
             <div class="modal-body">
-                <!-- 1. 123网盘 -->
                 <a href="https://1812019632.share.123pan.cn/123pan/AH3rVv-I2ARh?pwd=H28G" target="_blank" rel="noopener" class="dl-option">
                     <div class="dl-option-title">
                         <span class="dl-icon">
-                            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
                         </span>
                         前往123网盘下载
                     </div>
                     <div class="dl-option-note">需登录，下载无需客户端和收费，下载不限速，可选择历史版本</div>
                 </a>
-
-                <!-- 2. QQ闪传 -->
                 <a href="https://douyin-lao6pc.github.io/lao6-pe/qq" target="_blank" rel="noopener" class="dl-option">
                     <div class="dl-option-title">
                         <span class="dl-icon">
-                            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
                         </span>
                         QQ闪传下载
                     </div>
                     <div class="dl-option-note">无需登录、客户端、收费，下载不限速，只能下载最新版本</div>
                 </a>
-
-                <!-- 3. 夸克网盘 -->
                 <a href="https://pan.quark.cn/s/ef228403aa61" target="_blank" rel="noopener" class="dl-option">
                     <div class="dl-option-title">
                         <span class="dl-icon">
                             <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                <circle cx="12" cy="12" r="10"/>
-                                <path d="M12 8v8M8 12h8"/>
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 8v8M8 12h8" />
                             </svg>
                         </span>
                         夸克网盘下载
@@ -870,15 +971,15 @@
 
         <!-- Hero -->
         <section class="hero">
-            <div class="hero-badge">1.6.1 版本已发布 &mdash; 全系列更新</div>
+            <div class="hero-badge">1.7 版本已发布 &mdash; 全系列更新</div>
             <h1>
                 <span class="highlight">lao6-PE</span><br />
                 更好的 PE 维护系统
             </h1>
-            <p class="hero-sub">做一个高端标杆的PE系统 | 当前用户量（07/31）：4512</p>
+            <p class="hero-sub">做一个高端标杆的PE系统 | 当前用户量（08/23）：5214</p>
             <div class="hero-actions">
                 <button class="btn btn-primary" onclick="openModal()">
-                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
                     前往下载
                 </button>
             </div>
@@ -887,11 +988,11 @@
         <!-- Stats -->
         <div class="stats-bar reveal">
             <div class="stat-item">
-                <div class="stat-num">1.6.1</div>
+                <div class="stat-num">1.7系列</div>
                 <div class="stat-label">最新版本</div>
             </div>
             <div class="stat-item">
-                <div class="stat-num">3</div>
+                <div class="stat-num">4</div>
                 <div class="stat-label">分支版本</div>
             </div>
             <div class="stat-item">
@@ -912,44 +1013,68 @@
                 <p class="section-desc">用户量（2026/07/31）：4512</p>
             </div>
             <div class="version-grid">
-                <div class="version-card reveal">
+
+                <!-- 标准版 -->
+                <div class="version-card card-standard reveal">
                     <div class="vc-header">
                         <span class="vc-tag">标准版</span>
-                        <div class="vc-title">lao6-PE 1.6.1 标准版</div>
-                        <div class="vc-size">ISO 大小: <strong>459.00 MB</strong> <span style="color:var(--accent-emerald); font-size:0.75rem;">(1.5版本 440.00 MB)</span></div>
+                        <div class="vc-title">lao6-PE 1.7 标准版</div>
+                        <div class="vc-size">ISO 大小: <strong>507.00 MB</strong> <span style="color:var(--accent-emerald); font-size:0.75rem;">(1.6.1版本 459.00 MB)</span></div>
                     </div>
                     <div class="vc-body">
                         <ul>
-                            <li>加入Windows 11 OOBE 自动部署工具2.0</li>
+                            <li>修复已知问题</li>
+                            <li>将WinNT Setup系统安装工具放置于桌面</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="version-card reveal">
+                <!-- Pro 版 -->
+                <div class="version-card card-pro reveal">
                     <div class="vc-header">
                         <span class="vc-tag">专业版</span>
-                        <div class="vc-title">lao6-PE 1.6.1 Pro</div>
-                        <div class="vc-size">ISO 大小: <strong>799.00 MB</strong> <span style="color:var(--accent-emerald); font-size:0.75rem;">(1.5版本 940.00 MB)</span></div>
+                        <div class="vc-title">lao6-PE 1.7 Pro</div>
+                        <div class="vc-size">ISO 大小: <strong>731.00 MB</strong> <span style="color:var(--accent-emerald); font-size:0.75rem;">(1.6.1版本 799.00 MB)</span></div>
                     </div>
                     <div class="vc-body">
                         <ul>
-                            <li>加入Windows 11 OOBE 自动部署工具2.0</li>
+                            <li>修复已知问题</li>
+                            <li>将WinNT Setup系统安装工具放置于桌面</li>
+                            <li>将Microsoft Edge更改为Google Chrome</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="version-card featured reveal">
+                <!-- Ultra 版 -->
+                <div class="version-card card-ultra featured reveal">
                     <div class="vc-header">
                         <span class="vc-tag">旗舰版 <span class="featured-badge">推荐</span></span>
-                        <div class="vc-title">lao6-PE 1.6.1 Ultra</div>
-                        <div class="vc-size">ISO 大小: <strong>947.00 MB</strong> <span style="color:var(--accent-emerald); font-size:0.75rem;">(1.5版本 1.06 GB)</span></div>
+                        <div class="vc-title">lao6-PE 1.7 Ultra</div>
+                        <div class="vc-size">ISO 大小: <strong>879.00 MB</strong> <span style="color:var(--accent-emerald); font-size:0.75rem;">(1.6.1版本 947 MB)</span></div>
                     </div>
                     <div class="vc-body">
                         <ul>
-                            <li>加入Windows 11 OOBE 自动部署工具2.0</li>
+                            <li>修复已知问题</li>
+                            <li>将WinNT Setup系统安装工具放置于桌面</li>
+                            <li>将Microsoft Edge更改为Google Chrome</li>
                         </ul>
                     </div>
                 </div>
+
+                <!-- Lite 版 -->
+                <div class="version-card card-lite reveal">
+                    <div class="vc-header">
+                        <span class="vc-tag">兼容性狂魔</span>
+                        <div class="vc-title">lao6-PE 1.7 Lite</div>
+                        <div class="vc-size">ISO 大小: <strong>842.00 MB</strong> <span style="color:var(--accent-emerald); font-size:0.75rem;">(1.6.1版本：-)</span></div>
+                    </div>
+                    <div class="vc-body">
+                        <ul>
+                            <li>描述：为游戏办公娱乐而生</li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -958,7 +1083,7 @@
             <div class="section-header reveal">
                 <div class="section-tag">// Compare</div>
                 <h2 class="section-title">版本功能对比</h2>
-                <p class="section-desc">一表看清三个版本的功能差异，快速找到最适合你的选择。</p>
+                <p class="section-desc">一表看清四个版本的功能差异，快速找到最适合你的选择。</p>
             </div>
             <div class="compare-wrap reveal">
                 <table class="compare-table">
@@ -968,6 +1093,7 @@
                             <th>标准版</th>
                             <th>Pro</th>
                             <th>Ultra</th>
+                            <th>Lite</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -976,9 +1102,11 @@
                             <td>459 MB</td>
                             <td>799 MB</td>
                             <td>947 MB</td>
+                            <td>280 MB</td>
                         </tr>
                         <tr>
                             <td>Windows 11 内核</td>
+                            <td class="check">&#10003;</td>
                             <td class="check">&#10003;</td>
                             <td class="check">&#10003;</td>
                             <td class="check">&#10003;</td>
@@ -988,9 +1116,11 @@
                             <td class="check">&#10003;</td>
                             <td class="check">&#10003;</td>
                             <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
                         </tr>
                         <tr>
                             <td>声音支持</td>
+                            <td class="check">&#10003;</td>
                             <td class="check">&#10003;</td>
                             <td class="check">&#10003;</td>
                             <td class="check">&#10003;</td>
@@ -1000,16 +1130,19 @@
                             <td class="check">&#10003;</td>
                             <td class="check">&#10003;</td>
                             <td class="check">&#10003;</td>
+                            <td class="cross">&mdash;</td>
                         </tr>
                         <tr>
                             <td>微软 VC 库合集</td>
                             <td class="cross">&mdash;</td>
                             <td class="check">&#10003;</td>
                             <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
                         </tr>
                         <tr>
-                            <td>Microsoft Edge 浏览器</td>
+                            <td>Google Chrome</td>
                             <td class="cross">&mdash;</td>
+                            <td class="check">&#10003;</td>
                             <td class="check">&#10003;</td>
                             <td class="check">&#10003;</td>
                         </tr>
@@ -1018,9 +1151,11 @@
                             <td class="cross">&mdash;</td>
                             <td class="check">&#10003;</td>
                             <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
                         </tr>
                         <tr>
                             <td>Legacy BIOS 启动模式</td>
+                            <td class="check">&#10003;</td>
                             <td class="check">&#10003;</td>
                             <td class="check">&#10003;</td>
                             <td class="check">&#10003;</td>
@@ -1030,12 +1165,14 @@
                             <td class="check">&#10003;</td>
                             <td class="check">&#10003;</td>
                             <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
                         </tr>
                         <tr>
                             <td>远程软件</td>
                             <td class="cross">&mdash;</td>
                             <td class="cross">&mdash;</td>
                             <td class="check">&#10003;</td>
+                            <td class="cross">&mdash;</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1067,20 +1204,18 @@
         }
 
         document.getElementById('modalClose').addEventListener('click', closeModal);
-        modal.addEventListener('click', function(e) {
+        modal.addEventListener('click', function (e) {
             if (e.target === modal) closeModal();
         });
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') closeModal();
         });
 
-        // 导航栏滚动效果
         const nav = document.getElementById('nav');
         window.addEventListener('scroll', () => {
             nav.classList.toggle('scrolled', window.scrollY > 20);
         });
 
-        // 滚动入场动画
         const reveals = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry, i) => {
@@ -1092,7 +1227,6 @@
         }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
         reveals.forEach(el => observer.observe(el));
 
-        // 平滑锚点跳转
         document.querySelectorAll('a[href^="#"]').forEach(a => {
             a.addEventListener('click', e => {
                 const target = document.querySelector(a.getAttribute('href'));
